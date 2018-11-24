@@ -1,13 +1,17 @@
 <?php
+
     require_once "connection.php";
 
-    $conn= Connection::connection();
+    $conn= Connection::connect();
 
-    $comment= $_POST['comment'];
+    $id= $_POST['id'];
+    $title= $_POST['title'];
+    $description=$_POST['description'];
 
-    $sql="UPDATE test SET comment='$comment' WHERE id='$id'";
+    $sql= "INSERT INTO test(title,description) VALUES('$title','$description')";
 
     $conn->query($sql);
 
     header("Location: index.php");
+
 ?>
